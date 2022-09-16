@@ -3,10 +3,37 @@ using std::string;
 
 class Employee
 {
-public:
+private:
     string Name;
     string Company;
     int Age;
+
+public:
+    void setName(string name)
+    {
+        Name = name;
+    }
+    string getName()
+    {
+        return Name;
+    }
+    void setCompany(string company)
+    {
+        Company = company;
+    }
+    string getCompany()
+    {
+        return Company;
+    }
+    void setAge(int age)
+    {
+        if (age >= 18)
+            Age = age;
+    }
+    int getAge()
+    {
+        return Age;
+    }
 
     void introduceYourself()
     {
@@ -29,6 +56,9 @@ int main()
     Employee employee1("Danh Le", "CAE", 23);
 
     employee1.introduceYourself();
+    std::cout << employee1.getName();
+    employee1.setAge(50);
+    std::cout << employee1.getAge();
 
     return 0;
 }
