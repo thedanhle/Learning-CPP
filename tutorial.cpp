@@ -14,9 +14,11 @@ class AbstractEmployee
 class Employee : AbstractEmployee
 {
 private: // cant access these properties outside of our class
-    string Name;
     string Company;
     int Age;
+
+protected:
+    string Name;
 
 public:
     // getters and setters
@@ -73,13 +75,46 @@ public:
     }
 };
 
+class Developer : public Employee
+{
+public:
+    string FavProgrammingLanguage;
+    Developer(string name, string company, int age, string favProgrammingLanguage) : Employee(name, company, age)
+    {
+        FavProgrammingLanguage = favProgrammingLanguage;
+    }
+
+    void fixBug()
+    {
+        std::cout << Name << " fixed bug using " << FavProgrammingLanguage << std::endl;
+    }
+};
+
+class Teacher : public Employee
+{
+public:
+    string Subject;
+    void PrepareLesson()
+    {
+        std::cout << Name << " is preparing " << Subject << " lesson " << std::endl;
+    }
+    Teacher(string name, string company, int age, string subject) : Employee(name, company, age)
+    {
+        Subject = subject;
+    }
+};
+
 // Our main function
 int main()
 {
-    Employee employee1("Danh Le", "CAE", 23);
-    Employee employee2("Mike Jordan", "NBA", 45);
-    employee1.AskForPromotion();
-    employee2.AskForPromotion();
+    Developer dev1 = Developer("Danh Le", "Google", 31, "Python");
+
+    dev1.fixBug();
+    dev1.AskForPromotion();
+
+    Teacher teach1 = Teacher("Mack", "coder school", 35, "math");
+    teach1.PrepareLesson();
+    teach1.AskForPromotion();
 
     return 0;
 }
