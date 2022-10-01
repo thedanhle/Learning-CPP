@@ -66,7 +66,10 @@ public:
     // asking for promotion
     void AskForPromotion()
     {
-        std::cout << "hello" << std::endl;
+        if (Age > 30)
+            std::cout << Name << " got promoted" << std::endl;
+        else
+            std::cout << Name << " did not get promoted" << std::endl;
     }
 };
 
@@ -74,7 +77,9 @@ public:
 int main()
 {
     Employee employee1("Danh Le", "CAE", 23);
-    employee1.introduceYourself();
+    Employee employee2("Mike Jordan", "NBA", 45);
+    employee1.AskForPromotion();
+    employee2.AskForPromotion();
 
     return 0;
 }
